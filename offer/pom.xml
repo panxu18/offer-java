@@ -6,7 +6,7 @@
 		<artifactId>offer-java</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>Ch2</artifactId>
+	<artifactId>offer</artifactId>
 
 	<dependencies>
 				<dependency>
