@@ -8,7 +8,7 @@ public class ReplaceSpaces {
 		/*
 		 * 检查空字符串
 		 */
-		if (str == null || str.length() <=0 )
+		if (str == null || str.length() < 0 )
 			throw new IllegalArgumentException();
 		
 		int oldLen = str.length();
