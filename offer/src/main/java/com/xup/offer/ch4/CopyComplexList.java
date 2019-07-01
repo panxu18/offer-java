@@ -25,6 +25,8 @@ public class CopyComplexList {
 	 * 空间复杂度O(n)，时间复杂度O(n)
 	 */
 	private RandomListNode CloneWithMap(RandomListNode pHead) {
+		if (pHead == null)
+			return null;
 		Map<RandomListNode, RandomListNode> map = new HashMap<>();
 		RandomListNode newHead = null;
 		RandomListNode oldNode = pHead;
@@ -65,6 +67,8 @@ public class CopyComplexList {
 	 * 空间复杂度O(1)时间复杂度O(n)
 	 */
 	private RandomListNode CloneWithoutMap(RandomListNode pHead) {
+		if (pHead == null)
+			return null;
 		RandomListNode pNode = pHead;
 		RandomListNode temp = null;
 		/*
