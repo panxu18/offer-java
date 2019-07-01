@@ -65,53 +65,43 @@ public class CopyComplexList {
 	 * 空间复杂度O(1)时间复杂度O(n)
 	 */
 	private RandomListNode CloneWithoutMap(RandomListNode pHead) {
-		RandomListNode newHead = null;
-		RandomListNode oldNode = pHead;
-		RandomListNode oldPreNode = null;
-		RandomListNode newNode = null;
-		RandomListNode newPreNode = null;
+		RandomListNode pNode = pHead;
+		RandomListNode temp = null;
 		/*
-		 * 遍历链表构建next链
+		 * 复制节点并插入next链中
 		 */
-		while (oldNode != null) {
-			newNode = new RandomListNode(oldNode.label);
-			if (newPreNode == null)
-				newHead = newNode;
-			else
-				newPreNode.next = newNode;
-			newPreNode = newNode;
-			oldPreNode = oldNode;
-			oldNode = oldNode.next;
-			// 利用原节点的next指向新复制的节点，新节点的random指向原节点，
-			// 从而不需要利用map保存两个节点的对应关系
-			oldPreNode.next = newNode;
-			newNode.random = oldPreNode;
+		while (pNode != null) {
+			temp = pNode.next;
+			pNode.next = new RandomListNode(pNode.label);
+			pNode.next.next = temp;
+			pNode = temp;
 		}
 		/*
-		 * 遍历复制的链表，设置random链
+		 * 复杂random链
 		 */
-		 newNode = newHead;
-		 while (newNode != null) {
-			 // 新节点对应的原节点
-			 oldNode = newNode.random; 
-			 /*
-			  * 设置新节点的random链
-			  */
-			 if (oldNode.random == null)
-				 newNode.random = null;
-			 else
-				 newNode.random = oldNode.random.next;
-			 /*
-			  *  恢复原节点的next链
-			  */
-			 if (newNode.next != null)
-				 oldNode.next = newNode.next.random;
-			 else
-				 oldNode.next = null;
-			 // 移动指针
-			 newNode = newNode.next;
-		 }
-		 return newHead;
+		pNode = pHead;
+		while (pNode != null) {
+			if (pNode.random != null)
+				pNode.next.random = pNode.random.next;
+			pNode = pNode.next.next;
+		}
+		/*
+		 * 拆分链表
+		 */
+		pNode = pHead;
+		RandomListNode newHead = null;
+		while (pNode != null) {
+			if (newHead == null) {
+				newHead = pNode.next;
+				temp = newHead;
+			} else {
+				temp.next = pNode.next;
+				temp = temp.next;
+			}
+			pNode.next = temp.next;
+			pNode = pNode.next;
+		}
+		return newHead;
 	}
 	
 	public static void main(String[] args) {
