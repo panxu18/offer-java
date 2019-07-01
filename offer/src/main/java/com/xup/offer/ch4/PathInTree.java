@@ -21,6 +21,9 @@ public class PathInTree {
 	}
 
 
+	/*
+	 * 非递归解法
+	 */
 	public ArrayList<ArrayList<Integer>> FindPath(TreeNode root,int target) {
 
 		if (root == null)
@@ -84,6 +87,28 @@ public class PathInTree {
 				.collect(Collectors.toList());*/
 		return result;
 	}
+	
+	
+	ArrayList<ArrayList<Integer>> result = new ArrayList<>();
+	ArrayList<Integer> list = new ArrayList<>();
+	/*
+	 * 递归解法
+	 */
+	public ArrayList<ArrayList<Integer>> FindPath2(TreeNode root, int target) {
+		if (root == null)
+			return new ArrayList<ArrayList<Integer>>(0);
+		list.add(root.val);
+		target -= root.val;
+		if (root.left == null && root.right == null && target == 0) {
+			result.add(new ArrayList<>(list));
+		}
+		if (root.left != null)
+			FindPath2(root.left, target);
+		if (root.right != null)
+			FindPath2(root.right, target);
+		list.remove(list.size() - 1);
+		return result;
+	}
 
 	public static void main(String[] args) {
 		PathInTree pathInTree = new PathInTree();
@@ -96,8 +121,5 @@ public class PathInTree {
 		System.out.println(pathInTree.FindPath(root, 22));
 
 	}
-
-
-
 
 }
