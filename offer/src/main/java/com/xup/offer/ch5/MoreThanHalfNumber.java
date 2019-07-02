@@ -89,12 +89,13 @@ public class MoreThanHalfNumber {
 			if (index < array.length / 2)
 				left = index + 1;
 			else if (index > array.length / 2)
-				right = index - 1;
+				right = index; //right不在partion区间内
 			else
 				break;
 		}
 		return isKeyNumber(array, array[index]);
 	}
+	
 	public static void main(String[] args) {
 		System.out.println(new MoreThanHalfNumber().MoreThanHalfNum_Solution(
 				new int[]{1,2,3,2,2,2,5,4,2}));
