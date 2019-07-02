@@ -1,11 +1,14 @@
 package com.xup.offer.ch5;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.PriorityQueue;
 
 public class KLeastNumbers {
 
 	public ArrayList<Integer> GetLeastNumbers_Solution(int [] input, int k) {
-		return getKLeastNumbers(input, k);
+//		return getKLeastNumbers(input, k);
+		return getKLeastNumbersWithMaxHeap(input, k);
 	}
 	
 	/**
@@ -66,8 +69,41 @@ public class KLeastNumbers {
 		return result;
 	}
 	
+	/**
+	 * 使用优先队列维持数组中最小k个数
+	 * @param array
+	 * @param k
+	 * @return
+	 */
+	private ArrayList<Integer> getKLeastNumbersWithMaxHeap(int[] array, int k) {
+		if (array == null || array.length <= 0
+				|| k <= 0 || k > array.length)
+			return new ArrayList<>(0);
+		/*
+		 * 默认比较函数为升序，即compare返回负值表示左值排在右值前面
+		 */
+		PriorityQueue<Integer> maxHeap = new PriorityQueue<>(k, new Comparator<Integer>() {
+
+			@Override
+			public int compare(Integer o1, Integer o2) {
+				// TODO Auto-generated method stub
+				return o2.compareTo(o1);
+			}
+		});
+		for (int i = 0; i < k; i++)
+			maxHeap.add(array[i]);
+		for (int i = k; i < array.length; i++) {
+			if (maxHeap.peek() > array[i]) {
+				maxHeap.poll();
+				maxHeap.add(array[i]);
+			}
+				
+		}
+		return new ArrayList<>(maxHeap);
+	}
+	
 	public static void main(String[] args) {
-		System.out.println(new KLeastNumbers().getKLeastNumbers(
-				new int[]{4,5,1,6,2,7,3,8}, 1));
+		System.out.println(new KLeastNumbers().GetLeastNumbers_Solution(
+				new int[]{4,5,1,6,2,7,3,8}, 4));
 	}
 }
