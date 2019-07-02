@@ -3,8 +3,6 @@ package com.xup.offer.ch4;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Set;
-import java.util.TreeSet;
 
 public class StringPermutation {
 
