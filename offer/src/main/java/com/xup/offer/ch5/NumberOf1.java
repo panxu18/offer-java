@@ -15,9 +15,9 @@ public class NumberOf1 {
 	 * m大于1，d[k-1]*m 加上 [1,n-10^(k-1)*m]中1的个数 加上10^(k-1)
 	 * m等于1，d[k-1]*1  加上  [1,n-10^(k-1)*1]中1的个数 加上 n-10^(k-1)*1+1
 	 * 
-	 * 以678为例，其中第一部分为最高位为0到5时其他位包含的1的个数，
-	 * 第二部分为除去最高位剩下的部分包含的1的个数
-	 * 第三部分为最高位为1的数的个数
+	 * 以278为例，其中第一部分为最高位为0到1时其他位包含的1的个数，即[1,99],[100, 199](不包含最高位1)中1的个数
+	 * 第二部分为除去最高位剩下的部分包含的1的个数，即[200,278]中1的个数
+	 * 第三部分为[100, 199](只包含最高为1)中1的数目
 	 * 
 	 * d[k]的计算公式为
 	 * d[k] = d[k-1]*10 + 10^(k-1)
@@ -48,9 +48,6 @@ public class NumberOf1 {
 	 * 在递归解法中需要对除去最高的后剩下的部分递归求解
 	 * 使用循环从低位开始求解
 	 * 
-	 * 例如608，08已经在之前解决了，所以对最高位6求解时，
-	 * 只需要将600中1的个数和08中1的个数相加。
-	 * 
 	 * @param args
 	 */
 	public int getNumberOf1Between1AndNWithoutRecursion(int n) {
@@ -71,10 +68,31 @@ public class NumberOf1 {
 		}
 		return count;
 	}
+	
+	/**
+	 * 考虑某一位为1的数目个数，
+	 * 如果n的第k位为0时，那么第k位为1的数有n/(10^k) * 100个
+	 * 如果n的第k位为1时，那么第k位为1的数有n/(10^k) * 100 + n % (10^k) + 1个
+	 * 如果n的第k位大于1时，那么第k位为1的数有(n/(10^k) + 1) * 100
+	 * @param n
+	 * @return
+	 */
+	public int getNumberOf1Between1AndNWithoutRecursion2(int n) {
+		if (n < 1)
+			return 0;
+		int count = 0;
+		int mod = 1;
+		for(; mod <= n; mod *= 10) {
+			int a = n / mod;
+			int b = n % mod;
+			count += ((a + 8) /10) * mod + (a % 10 == 1 ? 1 : 0) * (b + 1);
+		}
+		return count;
+	}
 
 	public static void main(String[] args) {
 		System.out.println(new NumberOf1()
-				.getNumberOf1Between1AndNWithoutRecursion(10000));
+				.getNumberOf1Between1AndNWithoutRecursion(99));
 	}
 
 }
