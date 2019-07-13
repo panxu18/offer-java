@@ -9,7 +9,7 @@ public class NumbersAppearOnce {
 	 * @param num1
 	 * @param num2
 	 */
-	public void findNumsAppearOnce(int [] array,int num1[] , int num2[]) {
+	public void findNumsAppearOnce(int [] array, int[] num1, int[] num2) {
 		if (array == null || array.length < 2 ||
 				num1 == null || num1.length < 1
 				|| num2 == null || num2.length < 1)

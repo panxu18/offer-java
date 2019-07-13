@@ -19,8 +19,8 @@ public class Power {
 		if (bFlag)
 			base *= -1;
 		if ((exponent & 1) == 1 && bFlag) {
-			result *= -1;;
-		}
+			result *= -1;
+        }
 		/*
 		 * 主要计算
 		 */

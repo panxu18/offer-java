@@ -26,9 +26,7 @@ public class StackPushPopOrder {
 				return false;
 			index += 1;
 		}
-		if (stack.isEmpty())
-			return true;
-		return false;
+        return stack.isEmpty();
     }
 	
 	public static void main (String[] args) {
