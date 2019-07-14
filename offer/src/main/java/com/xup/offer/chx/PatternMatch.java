@@ -7,6 +7,7 @@ public class PatternMatch {
 	{
 		if (str == null || pattern == null)
 			return false;
+		// 模式匹配完时，字符串匹配完则匹配正确，否则错误
 		if (pattern.length == 0) {
 			if (str.length == 0)
 				return true;
