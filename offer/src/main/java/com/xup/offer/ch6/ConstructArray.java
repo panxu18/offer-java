@@ -4,7 +4,7 @@ import java.util.stream.IntStream;
 
 public class ConstructArray {
 	/**
-	 * 构建数组保存乘积
+	 * 保存数组最后n位的乘积
 	 * @param A
 	 * @return
 	 */
