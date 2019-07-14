@@ -18,7 +18,7 @@ public class ConstructArray {
 			productI2N[i] = productI2N[i + 1] * A[i + 1];
 		}
 		int[] B = new int[A.length];
-		int product = 1;
+		int product = 1; //前n项乘积
 		for (int i = 0; i < B.length; i++) {
 			B[i] = product *  productI2N[i];
 			product *= A[i];
