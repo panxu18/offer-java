@@ -3,8 +3,8 @@ package com.xup.offer.chx;
 public class IsNumeric {
 
 	/**
-	 * 1、E重复，E出现在除符号位的第一位, E出现在.的后一位, E出现在最后一位
-	 * 2、.重复，.出现在除符号位的第一，.出现在E之后，.出现在指数或底数最后一位
+	 * 1、E重复，E出现在第一位, E出现在.的后一位, E出现在最后一位
+	 * 2、.重复，.出现在第一，.出现在E之后，.出现在指数或底数最后一位
 	 * 3、符号重复，指数的符号只能在E后一位
 	 * 4、非法字符
 	 * @param str
@@ -46,8 +46,13 @@ public class IsNumeric {
 		return true;
 	}
 	
+	public boolean isNumericWithPattern(char[] str) {
+		String str1 = String.valueOf(str);
+		return str1.matches("[\\+\\-]?\\d*(\\.\\d+)?([eE][\\+\\-]?\\d+)?");
+	}
+	
 	public static void main(String[] args) {
-		System.out.println(new IsNumeric().isNumeric("12e+4.3".toCharArray()));
+		System.out.println(new IsNumeric().isNumeric("-e123".toCharArray()));
 	}
 
 }
