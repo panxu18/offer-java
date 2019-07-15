@@ -24,7 +24,7 @@ public class PrintTreeZig {
 	 * @param pRoot
 	 * @return
 	 */
-	public ArrayList<ArrayList<Integer> > Print(TreeNode pRoot) {
+	public ArrayList<ArrayList<Integer> > print(TreeNode pRoot) {
 		if (pRoot == null)
 			return new ArrayList<>(0);
 		ArrayList<ArrayList<Integer>> resultAll = new ArrayList<>();
