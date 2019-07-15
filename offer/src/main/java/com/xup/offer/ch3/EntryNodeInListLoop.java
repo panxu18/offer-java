@@ -1,16 +1,16 @@
 package com.xup.offer.ch3;
 
 public class EntryNodeInListLoop {
-	
-	 public class ListNode {
-	    int val;
-	    ListNode next = null;
 
-	    ListNode(int val) {
-	        this.val = val;
-	    }
+	public class ListNode {
+		int val;
+		ListNode next = null;
+
+		ListNode(int val) {
+			this.val = val;
+		}
 	}
-	
+
 	/**
 	 * 1、找到环中的节点
 	 * 2、计算环中节点个数
