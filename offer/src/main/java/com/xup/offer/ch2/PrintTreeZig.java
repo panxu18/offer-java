@@ -3,7 +3,7 @@ package com.xup.offer.ch2;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class PrintTree {
+public class PrintTreeZig {
 	
 	
 	public class TreeNode {
