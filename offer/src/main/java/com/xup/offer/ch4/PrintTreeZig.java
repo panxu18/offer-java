@@ -1,4 +1,4 @@
-package com.xup.offer.ch2;
+package com.xup.offer.ch4;
 
 import java.util.ArrayList;
 import java.util.Collections;
